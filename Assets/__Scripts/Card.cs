@@ -23,7 +23,7 @@ public class Card : MonoBehaviour {
 	}
 	
 	// property
-	public bool faceUP {
+	public bool faceUp {
 		get {
 			return (!back.activeSelf);
 		}		
@@ -79,6 +79,10 @@ public class Card : MonoBehaviour {
 			}
 		}
 	}
+	// Virtual methods can be overridden by subclass methods with the same name
+	virtual public void OnMouseUpAsButton() {
+		print (name); // When clicked, this outputs the card name
+	}
 
 } // class Card
 
@@ -96,10 +100,5 @@ public class CardDefinition{
 	public int		rank;	// value from 1-13 (Ace-King)
 	public List<Decorator>	
 					pips = new List<Decorator>();  // Pips Used
+}
 
-	// Virtual methods can be overridden by subclass methods with the same name
-	virtual public void OnMouseUpAsButton() {
-		print (name); // When clicked, this outputs the card name
-	}
-
-} // Class CardDefinition
