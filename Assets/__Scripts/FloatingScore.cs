@@ -12,8 +12,10 @@ public enum FSState {
 
 public class FloatingScore : MonoBehaviour {
 	public FSState state = FSState.idle;
-	[Serialize Field]
+	[SerializeField]
 	private int _score = 0;//The score fields
+	public string scoreString;
+
 	public int score {
 		get {
 			return(_score);
@@ -29,7 +31,7 @@ public class FloatingScore : MonoBehaviour {
 	public List<float> fontSizes; // Bezier points for font scaling
 	public float timeStart=-1f;
 	public float timeDuration=1f;
-	public string easingCuve=Easing.InOut;
+	public string easingCurve=Easing.InOut;
 
 	public GameObject reportFinishTo=null;
 
@@ -97,4 +99,4 @@ public class FloatingScore : MonoBehaviour {
 			}
 		}
 	}
-}
+}//560
