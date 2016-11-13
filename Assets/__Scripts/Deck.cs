@@ -248,7 +248,7 @@ public class Deck : MonoBehaviour {
 			tGO.name = "back";
 			
 			card.back = tGO;
-			card.faceUp = false;
+			card.faceUp = true;
 			
 			cards.Add (card);
 		} // for all the Cardnames	

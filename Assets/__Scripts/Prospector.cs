@@ -27,9 +27,6 @@ public class Prospector : MonoBehaviour {
 	public Deck					deck;
 	public TextAsset			deckXML;
 
-	public CardProspector target;
-	public List <CardProspector> tableau;
-	public List <CardProspector> discardPile;
 
 	public Layout layout;
 	public TextAsset layoutXML;
@@ -37,6 +34,10 @@ public class Prospector : MonoBehaviour {
 	public float xOffset = 3;
 	public float yOffset = -2.5f;
 	public Transform layoutAnchor;
+
+	public CardProspector target;
+	public List <CardProspector> tableau;
+	public List <CardProspector> discardPile;
 
 	public List<CardProspector> drawPile;
 
@@ -386,3 +387,4 @@ public class Prospector : MonoBehaviour {
 		}
 	}
 }
+//566
