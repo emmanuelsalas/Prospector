@@ -73,13 +73,13 @@ public class FloatingScore : MonoBehaviour {
 			// Move to the initial point 
 			transform.position = bezierPts[0];
 		} else {
-			if (u>=1) { // If u>=1, we're done moving
+			if (u >= 1) { // If u>=1, we're done moving
 				uC = 1; // Set uC=1 so we don't overshoot
 				state = FSState.post;
 				if (reportFinishTo != null) { //If there's a callback GameObject
 					// Use SendMessage to call the FSCallback method 
 					// with this as the parameter. 
-					reportFinishTo.SendMessage("FSCallback", this);
+					reportFinishTo.SendMessage ("FSCallback", this);
 					// Now that the message has been sent,
 					// Destroy this gameObject
 					Destroy (gameObject);
@@ -87,16 +87,20 @@ public class FloatingScore : MonoBehaviour {
 					// ...then don't destroy this. Just let it stay still.
 					state = FSState.idle;
 				}
-				// Use Bezier curve to move this to the right point 
-				Vector3 pos = Utils.Bezier(uC, bezierPts);
-				transform.position = pos;
-				if (fontSizes != null && fontSizes.Count>0) {
-					// If fontSizes has values in it
-					// ...then adjust the fontSize of this GUIText
-					int size = Mathf.RoundToInt( Utils.Bezier(uC, fontSizes) );
-					GetComponent<GUIText>().fontSize = size;
-				}
+			} else {
+				// 0<=u<1, which means that this is active and moving 
+				state = FSState.active;
+			}
+			// Use Bezier curve to move this to the right point 
+			Vector3 pos = Utils.Bezier(uC, bezierPts);
+			transform.position = pos;
+			if (fontSizes != null && fontSizes.Count>0) {
+				// If fontSizes has values in it
+				// ...then adjust the fontSize of this GUIText
+				int size = Mathf.RoundToInt( Utils.Bezier(uC, fontSizes) );
+				GetComponent<GUIText>().fontSize = size;
 			}
 		}
 	}
-}//560
+}
+
